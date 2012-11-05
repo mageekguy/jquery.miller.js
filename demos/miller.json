@@ -1,0 +1,11 @@
+{
+  "1": [ "A", true ],
+  "2": [ "B", false ],
+  "3": [ "C", true ],
+  "4": [ "D", false ],
+  "5": [ "E", false ],
+  "6": [ "F", false ],
+  "7": [ "G", true ],
+  "8": [ "H", false ],
+  "9": [ "I", false ]
+}
