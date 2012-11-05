@@ -23,7 +23,7 @@ To use it:
 <script type="text/javascript" src="url/to/js/jquery.miller.js"></script>
 ```
 
-5. Create a JavaScript script with this content:
+5. Create a JavaScript script with this content and add it t the end of the body of your html page:
 
 ``` JavaScript
 $(document).ready(function() { $('div').miller() });
