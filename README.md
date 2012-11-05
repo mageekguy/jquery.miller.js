@@ -32,7 +32,7 @@ $(document).ready(function() { $('div').miller() });
 You can pass an object litteral to the `miller` function to customize behavior of the plugin.  
 The default values are :
 
-```json
+```JavaScript
 {
 	'url': function(id) { return id; },
 	'minWidth': 40,
