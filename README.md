@@ -10,16 +10,21 @@ There is no dependencies needed to use this plugin.
 To use it:
 1. Clone the repository or download the source in a directory.  
 2. Add this line in the head of your html page:--
+
 ``` html
 <link href="url/to/css/jquery.miller.css" media="screen" rel="stylesheet" type="text/css" />
 ```
+
 3. Add a `div` in the body of your html page.  
 4. Add these lines at the end of the body of your html page:  
+
 ``` html
 <script type="text/javascript" src="url/to/js/jquery-1.8.2.min.js"></script>
 <script type="text/javascript" src="url/to/js/jquery.miller.js"></script>
 ```
+
 5. Create a JavaScript script with this content:
+
 ``` JavaScript
 $(document).ready(function() { $('div').miller() });
 ```
