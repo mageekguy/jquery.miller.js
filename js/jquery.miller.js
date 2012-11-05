@@ -12,6 +12,8 @@
 			)
 		;
 
+		this.addClass('miller');
+
 		var path = $('<div>', { class: 'path' })
 			.appendTo(this)
 		;
