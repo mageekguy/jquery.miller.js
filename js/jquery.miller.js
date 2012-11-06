@@ -68,7 +68,7 @@
 					$.each(lines, function(id, value) {
 							var line = $('<li>', { text: value[0] })
 								.bind('click', removeNextColumns)
-								.attr('data-id', id)
+								.data('id', id)
 							;
 
 							if (value[1]) {
@@ -128,7 +128,7 @@
 		;
 
 		var getLines = function() {
-				$.getJSON(settings['url']($(this).attr('data-id')), buildColumn);
+				$.getJSON(settings['url']($(this).data('id')), buildColumn);
 			}
 		;
 
@@ -140,7 +140,7 @@
 					.addClass('panel')
 				;
 
-				id = $(this).attr('data-id');
+				id = $(this).data('id');
 
 				$.each(settings['panel']['options'], function(key, callbackGenerator) {
 						var option = $('<li>', { text: key })
