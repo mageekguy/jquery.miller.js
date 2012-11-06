@@ -7,5 +7,7 @@
 	{ "id": 6, "name": "Luc", "parent": false },
 	{ "id": 7, "name": "Leia", "parent": true },
 	{ "id": 8, "name": "Ben Kenobi", "parent": false },
-	{ "id": 9, "name": "Dark Vador", "parent": false }
+	{ "id": 9, "name": "Dark Vador", "parent": false },
+	{ "id": 10, "name": "Yoda", "parent": false },
+	{ "id": 11, "name": "Mace Windu", "parent": true }
 ]
