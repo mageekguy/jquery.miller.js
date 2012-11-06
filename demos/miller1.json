@@ -1,11 +1,11 @@
 [
-	{ "id": 1, "name": "A", "parent": true },
-	{ "id": 2, "name": "B", "parent": false },
-	{ "id": 3, "name": "C", "parent": true },
-	{ "id": 4, "name": "D", "parent": false },
-	{ "id": 5, "name": "E", "parent": false },
-	{ "id": 6, "name": "F", "parent": false },
-	{ "id": 7, "name": "G", "parent": true },
-	{ "id": 8, "name": "H", "parent": false },
-	{ "id": 9, "name": "I", "parent": false }
+	{ "id": 1, "name": "Anakin", "parent": true },
+	{ "id": 2, "name": "Amidala", "parent": false },
+	{ "id": 3, "name": "C3PO", "parent": true },
+	{ "id": 4, "name": "R2D2", "parent": false },
+	{ "id": 5, "name": "Chewbaka", "parent": false },
+	{ "id": 6, "name": "Luc", "parent": false },
+	{ "id": 7, "name": "Leia", "parent": true },
+	{ "id": 8, "name": "Ben Kenobi", "parent": false },
+	{ "id": 9, "name": "Dark Vador", "parent": false }
 ]
