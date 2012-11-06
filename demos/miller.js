@@ -6,7 +6,7 @@ $(document).ready(function() {
 					} else {
 						var data = null;
 
-						$.ajaxSetup( { "async": false } );
+						$.ajaxSetup({ "async": false });
 
 						$.getJSON('miller1.json', function(lines) {
 								data = $.grep(lines, function(line) { return line['id'] == id; });
@@ -20,7 +20,7 @@ $(document).ready(function() {
 							);
 						}
 
-						$.ajaxSetup( { "async": true } );
+						$.ajaxSetup({ "async": true });
 
 						return (!data[0]['parent'] ? 'miller3.json' : (Math.random() <= 0.5 ? 'miller1.json' : 'miller2.json'));
 					}
