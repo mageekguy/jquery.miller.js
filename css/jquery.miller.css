@@ -81,6 +81,15 @@
 	background-position: 100% 50%;
 }
 
+.miller li.parentLoading
+{
+	color: #fff;
+	background: #08c;
+	background-image: url('../images/loader.gif');
+	background-repeat: no-repeat;
+	background-position: 100% 50%;
+}
+
 .miller li.parentSelected
 {
 	color: #fff;

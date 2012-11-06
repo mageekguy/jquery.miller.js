@@ -1,0 +1,11 @@
+[
+	{ "id": 1, "name": "A", "parent": true },
+	{ "id": 2, "name": "B", "parent": false },
+	{ "id": 3, "name": "C", "parent": true },
+	{ "id": 4, "name": "D", "parent": false },
+	{ "id": 5, "name": "E", "parent": false },
+	{ "id": 6, "name": "F", "parent": false },
+	{ "id": 7, "name": "G", "parent": true },
+	{ "id": 8, "name": "H", "parent": false },
+	{ "id": 9, "name": "I", "parent": false }
+]

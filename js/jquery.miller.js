@@ -52,12 +52,14 @@
 
 				line.addClass(line.hasClass('parent') ? 'parentSelected' : 'selected');
 
-				var columnIndex = column.index() - 1;
+				var columnIndex = column.index();
+
+				columnIndex -= (columnIndex - (columnIndex / 2));
 
 				path
 					.append($('<span>', { text: line.text() }))
 					.children()
-						.slice(columnIndex < 0 ? 0 : columnIndex, -1)
+						.slice(columnIndex, -1)
 							.remove()
 				;
 
@@ -65,26 +67,54 @@
 		;
 
 		var buildColumn = function(lines) {
-				if (lines) {
+				if (lines.length <= 0) {
+					var line = $('li.parentLoading')
+						.removeClass('parent')
+						.addClass('selected')
+					;
+
+					var width = getColumnsWidth();
+
+					var panel = $('<ul>')
+						.css({ 'top': 0, 'left': width })
+						.addClass('panel')
+					;
+
+					id = line.attr('data-id');
+
+					$.each(settings['panel']['options'], function(key, callbackGenerator) {
+							var option = $('<li>', { text: key })
+								.bind('click', callbackGenerator(id))
+							;
+
+							option.appendTo(panel);
+						}
+					);
+
+					columns
+						.append(panel)
+						.scrollLeft(width + panel.width())
+					;
+				} else {
+					$('li.parentLoading').addClass('parentSelected');
+
 					var width = getColumnsWidth();
 
 					var column = $('<ul>')
 						.css({ 'top': 0, 'left': width })
 					;
 
-					$.each(lines, function(id, value) {
-							var line = $('<li>', { text: value[0] })
+					$.each(lines, function(id, data) {
+							var line = $('<li>', { text: data['name'] })
+								.attr('data-id', data['id'])
 								.bind('click', removeNextColumns)
-								.attr('data-id', id)
+								.bind('click', getLines)
+								.appendTo(column)
 							;
 
-							if (value[1]) {
-								line.addClass('parent').bind('click', getLines);
-							} else {
-								line.bind('click', buildPanel);
+							if (data['parent']) {
+								line.addClass('parent');
 							}
-							
-							line.appendTo(column);
 						}
 					);
 
@@ -134,34 +164,24 @@
 			}
 		;
 
-		var getLines = function() {
-				$.getJSON(settings['url']($(this).attr('data-id')), buildColumn);
-			}
-		;
+		var getLines = function(event) {
+				var currentLine = $(event.currentTarget);
 
-		var buildPanel = function() {
-				var width = getColumnsWidth();
-
-				var panel = $('<ul>')
-					.css({ 'top': 0, 'left': width })
-					.addClass('panel')
+				currentLine
+					.removeClass('parentSelected')
+					.addClass('parentLoading')
 				;
 
-				id = $(this).attr('data-id');
-
-				$.each(settings['panel']['options'], function(key, callbackGenerator) {
-						var option = $('<li>', { text: key })
-							.bind('click', callbackGenerator(id))
-						;
-
-						option.appendTo(panel);
-					}
-				);
-
-				columns
-					.append(panel)
-					.scrollLeft(width + panel.width())
+				$.getJSON(settings['url']($(this).attr('data-id')), buildColumn)
+					.always(function() {
+							currentLine
+								.removeClass('parentLoading')
+							;
+						}
+					)
+					.fail(function() {})
 				;
+
 			}
 		;
 
