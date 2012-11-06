@@ -145,7 +145,6 @@
 				var width = getColumnsWidth();
 
 				var panel = $('<ul>')
-					.css('width', settings['panel']['width'])
 					.css('top', 0)
 					.css('left', width)
 					.addClass('panel')
@@ -164,7 +163,7 @@
 
 				columns
 					.append(panel)
-					.scrollLeft(width + settings['panel']['width'])
+					.scrollLeft(width + panel.width())
 				;
 			}
 		;
