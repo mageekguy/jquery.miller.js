@@ -97,7 +97,7 @@
 													var delta = event.pageX - x;
 													var newWidth = column.width() + delta;
 
-													if (newWidth > settings['minWidth']) {
+													if (newWidth > settings.minWidth) {
 														column
 															.width(newWidth)
 															.nextAll()
@@ -128,7 +128,7 @@
 		;
 
 		var getLines = function() {
-				$.getJSON(settings['url']($(this).data('id')), buildColumn);
+				$.getJSON(settings.url($(this).data('id')), buildColumn);
 			}
 		;
 
@@ -158,7 +158,7 @@
 			}
 		;
 
-		$.getJSON(settings['url'](), buildColumn);
+		$.getJSON(settings.url(), buildColumn);
 
 		return this;
 	};
