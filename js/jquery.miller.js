@@ -1,11 +1,11 @@
 (function($) {
 	$.fn.miller = function(settings) {
 		var settings = $.extend({
-					'url': function(id) { return id; },
-					'minWidth': 40,
-					'panel': {
-						'width': 100,
-						'options': {}
+					url: function(id) { return id; },
+					minWidth: 40,
+					panel: {
+						width: 100,
+						options: {}
 					}
 				},
 				settings
@@ -24,12 +24,10 @@
 
 		var getColumnsWidth = function() {
 				var width = 0;
-
 				columns.children().each(function() {
 						width += $(this).width();
 					}
 				);
-
 				return width;
 			}
 		;
@@ -69,13 +67,13 @@
 					var width = getColumnsWidth();
 
 					var column = $('<ul>')
-						.css({ 'top': 0, 'left': width })
+						.css({ top: 0, left: width })
 					;
 
 					$.each(lines, function(id, value) {
 							var line = $('<li>', { text: value[0] })
 								.bind('click', removeNextColumns)
-								.attr('data-id', id)
+								.data('id', id)
 							;
 
 							if (value[1]) {
@@ -93,7 +91,7 @@
 						.scrollLeft(width += column.width())
 						.append(
 							$('<div>', { class: 'grip' })
-								.css({ 'top': 0, 'left': width })
+								.css({ top: 0, left: width })
 								.mousedown(function(event) {
 										var x = event.pageX;
 										var cursor = columns.css('cursor');
@@ -104,7 +102,7 @@
 													var delta = event.pageX - x;
 													var newWidth = column.width() + delta;
 
-													if (newWidth > settings['minWidth']) {
+													if (newWidth > settings.minWidth) {
 														column
 															.width(newWidth)
 															.nextAll()
@@ -135,7 +133,7 @@
 		;
 
 		var getLines = function() {
-				$.getJSON(settings['url']($(this).attr('data-id')), buildColumn);
+				$.getJSON(settings.url($(this).data('id')), buildColumn);
 			}
 		;
 
@@ -143,13 +141,13 @@
 				var width = getColumnsWidth();
 
 				var panel = $('<ul>')
-					.css({ 'top': 0, 'left': width })
+					.css({ top: 0, left: width })
 					.addClass('panel')
 				;
 
-				id = $(this).attr('data-id');
+				id = $(this).data('id');
 
-				$.each(settings['panel']['options'], function(key, callbackGenerator) {
+				$.each(settings.panel.options, function(key, callbackGenerator) {
 						var option = $('<li>', { text: key })
 							.bind('click', callbackGenerator(id))
 						;
@@ -165,7 +163,7 @@
 			}
 		;
 
-		$.getJSON(settings['url'](), buildColumn);
+		$.getJSON(settings.url(), buildColumn);
 
 		return this;
 	};
