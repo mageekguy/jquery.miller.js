@@ -23,7 +23,12 @@
 		;
 
 		var getColumnsWidth = function() {
-				return columns.children().length;
+				var width = 0;
+				columns.children().each(function() {
+						width += $(this).width();
+					}
+				);
+				return width;
 			}
 		;
 
