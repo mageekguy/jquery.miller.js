@@ -147,7 +147,7 @@
 
 				id = $(this).data('id');
 
-				$.each(settings['panel']['options'], function(key, callbackGenerator) {
+				$.each(settings.panel.options, function(key, callbackGenerator) {
 						var option = $('<li>', { text: key })
 							.bind('click', callbackGenerator(id))
 						;
