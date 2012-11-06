@@ -22,11 +22,7 @@ $(document).ready(function() {
 
 						$.ajaxSetup( { "async": true } );
 
-						if (!data[0]['parent']) {
-							return 'miller3.json';
-						} else {
-							return Math.random() <= 0.5 ? 'miller1.json' : 'miller2.json'; 
-						}
+						return (!data[0]['parent'] ? 'miller3.json' : (Math.random() <= 0.5 ? 'miller1.json' : 'miller2.json'));
 					}
 				},
 				'panel': {

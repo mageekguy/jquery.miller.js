@@ -80,7 +80,7 @@
 						.addClass('panel')
 					;
 
-					id = line.attr('data-id');
+					id = line.data('id');
 
 					$.each(settings['panel']['options'], function(key, callbackGenerator) {
 							var option = $('<li>', { text: key })
@@ -106,7 +106,7 @@
 
 					$.each(lines, function(id, data) {
 							var line = $('<li>', { text: data['name'] })
-								.attr('data-id', data['id'])
+								.data('id', data['id'])
 								.bind('click', removeNextColumns)
 								.bind('click', getLines)
 								.appendTo(column)
@@ -172,7 +172,7 @@
 					.addClass('parentLoading')
 				;
 
-				$.getJSON(settings['url']($(this).attr('data-id')), buildColumn)
+				$.getJSON(settings['url']($(this).data('id')), buildColumn)
 					.always(function() {
 							currentLine
 								.removeClass('parentLoading')
