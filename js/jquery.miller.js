@@ -1,11 +1,11 @@
 (function($) {
 	$.fn.miller = function(settings) {
 		var settings = $.extend({
-					'url': function(id) { return id; },
-					'minWidth': 40,
-					'panel': {
-						'width': 100,
-						'options': {}
+					url: function(id) { return id; },
+					minWidth: 40,
+					panel: {
+						width: 100,
+						options: {}
 					}
 				},
 				settings
@@ -62,7 +62,7 @@
 					var width = getColumnsWidth();
 
 					var column = $('<ul>')
-						.css({ 'top': 0, 'left': width })
+						.css({ top: 0, left: width })
 					;
 
 					$.each(lines, function(id, value) {
@@ -86,7 +86,7 @@
 						.scrollLeft(width += column.width())
 						.append(
 							$('<div>', { class: 'grip' })
-								.css({ 'top': 0, 'left': width })
+								.css({ top: 0, left: width })
 								.mousedown(function(event) {
 										var x = event.pageX;
 										var cursor = columns.css('cursor');
@@ -136,7 +136,7 @@
 				var width = getColumnsWidth();
 
 				var panel = $('<ul>')
-					.css({ 'top': 0, 'left': width })
+					.css({ top: 0, left: width })
 					.addClass('panel')
 				;
 
