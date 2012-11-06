@@ -84,7 +84,7 @@
 
 					$.each(settings['panel']['options'], function(key, callbackGenerator) {
 							var option = $('<li>', { text: key })
-								.bind('click', callbackGenerator(id))
+								.on('click', callbackGenerator(id))
 							;
 
 							option.appendTo(panel);
@@ -107,8 +107,8 @@
 					$.each(lines, function(id, data) {
 							var line = $('<li>', { text: data['name'] })
 								.data('id', data['id'])
-								.bind('click', removeNextColumns)
-								.bind('click', getLines)
+								.on('click', removeNextColumns)
+								.on('click', getLines)
 								.appendTo(column)
 							;
 
