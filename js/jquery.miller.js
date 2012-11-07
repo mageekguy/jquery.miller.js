@@ -67,7 +67,9 @@
 		;
 
 		var buildColumn = function(lines) {
-				if (lines.length <= 0) {
+				if (lines == null) {
+					$('li.parentLoading').remove();
+				} else if (lines.length <= 0) {
 					var line = $('li.parentLoading')
 						.removeClass('parent')
 						.addClass('selected')
