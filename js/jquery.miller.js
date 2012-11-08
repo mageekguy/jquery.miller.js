@@ -57,7 +57,26 @@
 				columnIndex -= (columnIndex - (columnIndex / 2));
 
 				path
-					.append($('<span>', { text: line.text() }))
+					.append($('<span>', { text: line.text(), css: { cursor: 'pointer' } })
+						.on('click', function() {
+								columns
+									.children()
+										.slice((($(this).index() * 2) + 4))
+											.remove()
+								;
+								columns
+									.children('ul:last')
+											.find('li')
+												.removeClass('parentSelected')
+								;
+								path
+									.children()
+										.slice($(this).index() + 1)
+											.remove()
+								;
+							}
+						)
+					)
 					.children()
 						.slice(columnIndex, -1)
 							.remove()
