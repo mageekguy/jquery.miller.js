@@ -181,9 +181,7 @@
 		;
 
 		var getLines = function(event) {
-				var currentLine = $(event.currentTarget);
-
-				currentLine
+				var currentLine = $(event.currentTarget)
 					.removeClass('parentSelected')
 					.addClass('parentLoading')
 				;
