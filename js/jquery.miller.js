@@ -33,7 +33,7 @@
 		var currentLine = null;
 
 		$(document).on('keydown', function(event) {
-				if (hasFocus && currentLine && (event.which == 37 || event.which == 38 || event.which == 39 || event.which == 40)) {
+				if (hasFocus && currentLine && $.inArray(event.which, [ 37, 38, 39, 40 ])) {
 					var newCurrentLine = [];
 
 					switch (event.which) {
