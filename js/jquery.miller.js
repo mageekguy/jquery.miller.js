@@ -126,7 +126,7 @@
 
 					if (lastGrip) {
 						lastGrip = $(lastGrip);
-						width = lastGrip.position().left + lastGrip.width();
+						width = lastGrip.position().left + lastGrip.width() + columns.scrollLeft();
 					}
 
 					if (lines.length <= 0) {
