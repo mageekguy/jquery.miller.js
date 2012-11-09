@@ -54,8 +54,8 @@
 								;
 								columns
 									.children('ul:last')
-											.find('li')
-												.removeClass('parentSelected')
+										.find('li')
+											.removeClass('parentSelected')
 								;
 								path
 									.children()
@@ -120,7 +120,7 @@
 						;
 
 						$.each(lines, function(id, data) {
-								var line = $('<li>', { text: data['name'] })
+								var line = $('<li>', { text: data['name'], css: { cursor: 'pointer' } })
 									.data('id', data['id'])
 									.on('click', removeNextColumns)
 									.on('click', getLines)
