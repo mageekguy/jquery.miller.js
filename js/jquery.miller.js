@@ -2,6 +2,7 @@
 	$.fn.miller = function(settings) {
 		var settings = $.extend({
 					'url': function(id) { return id; },
+					'tabindex': 0,
 					'minWidth': 40,
 					'panel': {
 						'width': 100,
@@ -12,7 +13,14 @@
 			)
 		;
 
-		this.addClass('miller');
+		var hasFocus = false;
+
+		this
+			.addClass('miller')
+			.attr('tabindex', settings.tabindex)
+			.focus(function() { hasFocus = true; })
+			.blur(function() { hasFocus = false; })
+		;
 
 		var path = $('<div>', { class: 'path' })
 			.appendTo(this)
@@ -21,6 +29,41 @@
 		var columns = $('<div>', { class: 'columns' })
 			.appendTo(this)
 		;
+
+		var currentLine = null;
+
+		$(document).on('keydown', function(event) {
+				if (hasFocus && currentLine && (event.which == 37 || event.which == 38 || event.which == 39 || event.which == 40)) {
+					var newCurrentLine = [];
+
+					switch (event.which) {
+						case 37:
+							newCurrentLine = currentLine.parent().prev().prev().find('li.parentSelected');
+							break;
+
+						case 38:
+							newCurrentLine = currentLine.prev();
+							break;
+
+						case 39:
+							newCurrentLine = currentLine.parent().next().next().find('li:first');
+							break;
+
+						case 40:
+							newCurrentLine = currentLine.next();
+							break;
+					}
+
+					if (newCurrentLine.length) {
+						currentLine = newCurrentLine.click();
+						currentLine.parent().scrollTop(currentLine.position().top);
+					}
+
+					return false;
+				}
+			}
+		);
+
 
 		var removeNextColumns = function() {
 				var line = $(this);
@@ -97,7 +140,7 @@
 							.addClass('panel')
 						;
 
-						id = line.data('id');
+						var id = line.data('id');
 
 						$.each(settings['panel']['options'], function(key, callbackGenerator) {
 								var option = $('<li>', { text: key })
@@ -181,7 +224,7 @@
 		;
 
 		var getLines = function(event) {
-				var currentLine = $(event.currentTarget)
+				currentLine = $(event.currentTarget)
 					.removeClass('parentSelected')
 					.addClass('parentLoading')
 				;
