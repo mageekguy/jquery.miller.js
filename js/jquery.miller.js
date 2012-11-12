@@ -145,7 +145,7 @@
 
 						var id = line.data('id');
 
-						$.each(settings['panel']['options'], function(key, callbackGenerator) {
+						$.each(settings.panel.options, function(key, callbackGenerator) {
 								var option = $('<li>', { text: key })
 									.on('click', callbackGenerator(id))
 								;
@@ -195,7 +195,7 @@
 														var delta = event.pageX - x;
 														var newWidth = column.width() + delta;
 
-														if (newWidth > settings['minWidth']) {
+														if (newWidth > settings.minWidth) {
 															column
 																.width(newWidth)
 																.nextAll()
@@ -232,7 +232,7 @@
 					.addClass('parentLoading')
 				;
 
-				$.getJSON(settings['url']($(this).data('id')), buildColumn)
+				$.getJSON(settings.url($(this).data('id')), buildColumn)
 					.always(function() {
 							currentLine
 								.removeClass('parentLoading')
@@ -245,7 +245,7 @@
 			}
 		;
 
-		$.getJSON(settings['url'](), buildColumn);
+		$.getJSON(settings.url(), buildColumn);
 
 		return this;
 	};
