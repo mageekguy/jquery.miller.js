@@ -33,7 +33,6 @@
 {
 	position: absolute;
 	border-top: solid 1px #ddd;
-	padding: 0;
 	margin: 0;
 	left: 0;
 	bottom: 0;
@@ -50,9 +49,11 @@
 {
 	margin-left: 0.5em;
 	padding-left: 1.5em;
+	padding-right: 0.5em;
 	background-image: url('../images/chevron-black.png');
 	background-repeat: no-repeat;
 	background-position: 0 50%;
+	white-space: nowrap;
 }
 
 .miller div.columns ul

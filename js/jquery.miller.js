@@ -85,36 +85,38 @@
 
 				line.addClass(line.hasClass('parent') ? 'parentSelected' : 'selected');
 
-				var columnIndex = column.index();
-
-				columnIndex -= (columnIndex - (columnIndex / 2));
-
-				path
-					.append($('<span>', { text: line.text(), css: { cursor: 'pointer' } })
-						.click(function() {
-								columns
-									.children()
-										.slice((($(this).index() * 2) + 4))
-											.remove()
-								;
-								columns
-									.children('ul:last')
-										.find('li')
-											.removeClass('parentSelected')
-								;
-								path
-									.children()
-										.slice($(this).index() + 1)
-											.remove()
-								;
-							}
-						)
+				var node = $('<span>', { text: line.text(), css: { cursor: 'pointer' } })
+					.click(function() {
+							columns
+								.children()
+									.slice((($(this).index() * 2) + 4))
+										.remove()
+							;
+							columns
+								.children('ul:last')
+									.find('li')
+										.removeClass('parentSelected')
+							;
+							path
+								.children()
+									.slice($(this).index() + 1)
+										.remove()
+							;
+						}
 					)
-					.children()
-						.slice(columnIndex, -1)
-							.remove()
+					.appendTo(path)
 				;
 
+				var child = column.index();
+
+				child -= (child - (child / 2));
+
+				path
+					.scrollLeft(node.position().left)
+					.children()
+						.slice(child, -1)
+							.remove()
+				;
 			}
 		;
 
