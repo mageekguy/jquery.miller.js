@@ -139,24 +139,30 @@
 							.addClass('selected')
 						;
 
-						var pane = $('<ul>')
-							.css({ top: 0, left: width })
-							.addClass('pane')
-						;
+						var id = line.data('id');
+
+						var options = [];
 
 						$.each(settings.pane.options, function(key, callbackGenerator) {
-								var option = $('<li>', { text: key })
-									.click(callbackGenerator(line.data('id')))
+								options.push($('<li>', { text: key })
+										.click(callbackGenerator(id))
+									)
 								;
-
-								option.appendTo(pane);
 							}
 						);
 
-						columns
-							.append(pane)
-							.scrollLeft(width + pane.width())
-						;
+						if (options.length) {
+							var pane = $('<ul>')
+								.css({ top: 0, left: width })
+								.addClass('pane')
+								.append(options)
+								.appendTo(columns)
+							;
+
+							columns
+								.scrollLeft(width + pane.width())
+							;
+						}
 					} else {
 						$('li.parentLoading').addClass('parentSelected');
 
