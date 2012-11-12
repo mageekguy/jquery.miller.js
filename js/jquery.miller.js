@@ -4,7 +4,7 @@
 					url: function(id) { return id; },
 					tabindex: 0,
 					minWidth: 40,
-					panel: {
+					pane: {
 						width: '100px',
 						options: {}
 					}
@@ -139,25 +139,25 @@
 							.addClass('selected')
 						;
 
-						var panel = $('<ul>')
+						var pane = $('<ul>')
 							.css({ 'top': 0, 'left': width })
-							.addClass('panel')
+							.addClass('pane')
 						;
 
 						var id = line.data('id');
 
-						$.each(settings.panel.options, function(key, callbackGenerator) {
+						$.each(settings.pane.options, function(key, callbackGenerator) {
 								var option = $('<li>', { text: key })
 									.click(callbackGenerator(id))
 								;
 
-								option.appendTo(panel);
+								option.appendTo(pane);
 							}
 						);
 
 						columns
-							.append(panel)
-							.scrollLeft(width + panel.width())
+							.append(pane)
+							.scrollLeft(width + pane.width())
 						;
 					} else {
 						$('li.parentLoading').addClass('parentSelected');

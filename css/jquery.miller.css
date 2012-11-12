@@ -119,12 +119,12 @@
 	background-position: 0 0;
 }
 
-.miller ul.panel
+.miller ul.pane
 {
 	background: #fff;
 }
 
-.miller div.columns ul.panel li
+.miller div.columns ul.pane li
 {
 	-webkit-appearance: none;
 	-webkit-box-align: center;

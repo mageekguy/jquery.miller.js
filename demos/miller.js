@@ -25,7 +25,7 @@ $(document).ready(function() {
 						return (!data[0]['parent'] ? 'miller3.json' : (Math.random() <= 0.5 ? 'miller1.json' : 'miller2.json'));
 					}
 				},
-				'panel': {
+				'pane': {
 					'options': {
 						'Add': function(id) { return function() { alert('add to ' + id); }; },
 						'Update': function(id) { return function() { alert('update ' + id); }; },
