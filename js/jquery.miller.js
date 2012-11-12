@@ -1,12 +1,12 @@
 (function($) {
 	$.fn.miller = function(settings) {
-		var settings = $.extend({
-					'url': function(id) { return id; },
-					'tabindex': 0,
-					'minWidth': 40,
-					'panel': {
-						'width': 100,
-						'options': {}
+		var settings = $.extend(true, {
+					url: function(id) { return id; },
+					tabindex: 0,
+					minWidth: 40,
+					panel: {
+						width: '100px',
+						options: {}
 					}
 				},
 				settings
@@ -66,7 +66,6 @@
 				}
 			}
 		);
-
 
 		var removeNextColumns = function() {
 				var line = $(this);
