@@ -95,7 +95,7 @@
 
 				line.addClass(line.hasClass('parent') ? 'parentSelected' : 'selected');
 
-				var node = $('<span>', { text: line.text(), css: { cursor: 'pointer' } })
+				var node = $('<span>', { text: line.text() })
 					.click(function() {
 							columns
 								.children()
@@ -138,7 +138,7 @@
 						toolbar.children().remove();
 
 						$.each(settings.toolbar.options, function(key, callbackGenerator) {
-								$('<span>', { text: key, css: { cursor: 'pointer' } })
+								$('<span>', { text: key })
 									.click(callbackGenerator(currentLine.data('id')))
 									.appendTo(toolbar)
 								;
@@ -190,7 +190,7 @@
 						;
 
 						$.each(lines, function(id, data) {
-								var line = $('<li>', { text: data['name'], css: { cursor: 'pointer' } })
+								var line = $('<li>', { text: data['name'] })
 									.data('id', data['id'])
 									.click(removeNextColumns)
 									.click(getLines)
