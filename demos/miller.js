@@ -27,16 +27,15 @@ $(document).ready(function() {
 				},
 				toolbar: {
 					options: {
-						Add: function(id) { return function() { alert('Do you really want to add to ' + id); }; },
-						Update: function(id) { return function() { alert('update ' + id); }; },
-						Delete: function(id) { return function() { alert('delete ' + id); }; }
+						Select: function(id) { return function() { alert('Select node or leaf ' + id); }; },
+						Quickview: function(id) { return function() { alert('Quickview on node or leaf ' + id); }; },
 					}
 				},
 				pane: {
 					options: {
-						Add: function(id) { return function() { alert('add to ' + id); }; },
-						Update: function(id) { return function() { alert('update ' + id); }; },
-						Delete: function(id) { return function() { alert('delete ' + id); }; }
+						Add: function(id) { return function() { alert('Add to leaf ' + id); }; },
+						Update: function(id) { return function() { alert('Update leaf ' + id); }; },
+						Delete: function(id) { return function() { alert('Delete leaf ' + id); }; }
 					}
 				}
 			}
