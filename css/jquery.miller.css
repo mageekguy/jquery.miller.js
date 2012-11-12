@@ -8,7 +8,7 @@
 	padding: 0;
 	margin-bottom: 20px;
 	width: 600px;
-	height: 150px;
+	height: 169px;
 	background: #f5f5f5;
 	outline: 0;
 	-moz-user-select: none;
@@ -21,7 +21,7 @@
 {
 	position: absolute;
 	width: 100%;
-	height: 110px;
+	height: 129px;
 	left: 0;
 	top: 20px;
 	padding: 0;
@@ -95,9 +95,12 @@
 
 .miller li
 {
+	padding-left: 0.5em;
+	padding-right: 0.5em;
 	list-style-type: none;
-	padding: 0.3em;
 	cursor: pointer;
+	height: 25px;
+	line-height: 25px;
 }
 
 .miller li.parent

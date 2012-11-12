@@ -4,6 +4,7 @@
 					url: function(id) { return id; },
 					tabindex: 0,
 					minWidth: 40,
+					carroussel: false,
 					toolbar: {
 						options: {}
 					},
@@ -56,6 +57,10 @@
 
 						case 38:
 							newCurrentLine = currentLine.prev();
+
+							if (!newCurrentLine.length && settings.carroussel) {
+								newCurrentLine = currentLine.parent().find('li:last');
+							}
 							break;
 
 						case 39:
@@ -64,12 +69,21 @@
 
 						case 40:
 							newCurrentLine = currentLine.next();
+
+							if (!newCurrentLine.length && settings.carroussel) {
+								newCurrentLine = currentLine.parent().find('li:first');
+							}
 							break;
 					}
 
 					if (newCurrentLine.length) {
 						currentLine = newCurrentLine.click();
-						currentLine.parent().scrollTop(currentLine.position().top);
+
+						if (event.which == 40) {
+							currentLine.parent().scrollTop(currentLine.parent().scrollTop() + currentLine.height());
+						} else if (event.which == 38) {
+							currentLine.parent().scrollTop(currentLine.parent().scrollTop() - currentLine.height());
+						}
 					}
 
 					return false;
