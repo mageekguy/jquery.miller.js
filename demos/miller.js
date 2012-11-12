@@ -1,6 +1,6 @@
 $(document).ready(function() {
 		$('div').miller({
-				'url': function(id) {
+				url: function(id) {
 					if (!id) {
 						return 'miller1.json';
 					} else {
@@ -25,11 +25,11 @@ $(document).ready(function() {
 						return (!data[0]['parent'] ? 'miller3.json' : (Math.random() <= 0.5 ? 'miller1.json' : 'miller2.json'));
 					}
 				},
-				'pane': {
-					'options': {
-						'Add': function(id) { return function() { alert('add to ' + id); }; },
-						'Update': function(id) { return function() { alert('update ' + id); }; },
-						'Delete': function(id) { return function() { alert('delete ' + id); }; }
+				pane: {
+					options: {
+						Add: function(id) { return function() { alert('add to ' + id); }; },
+						Update: function(id) { return function() { alert('update ' + id); }; },
+						Delete: function(id) { return function() { alert('delete ' + id); }; }
 					}
 				}
 			}
