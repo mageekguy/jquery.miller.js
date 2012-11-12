@@ -144,11 +144,9 @@
 							.addClass('pane')
 						;
 
-						var id = line.data('id');
-
 						$.each(settings.pane.options, function(key, callbackGenerator) {
 								var option = $('<li>', { text: key })
-									.click(callbackGenerator(id))
+									.click(callbackGenerator(line.data('id')))
 								;
 
 								option.appendTo(pane);
