@@ -5,6 +5,13 @@
 It's a work in progress, so use it carefully!  
 If you want to see this plugin in action, there is a [demo](http://mgbx.net/demomiller).
 
+## Features
+
+* Ajax call to retrieve data.
+* Keyboard navigation.
+* Full customizable preview pane.
+* Full customizable toolbar.
+
 ## How to use it ?
 
 There is no dependencies needed to use this plugin. 
@@ -35,11 +42,13 @@ The default values are :
 
 ```JavaScript
 {
-	'url': function(id) { return id; },
-	'minWidth': 40,
-	'panel': {
-		'width': 100,
-		'options': {}
+	url: function(id) { return id; },
+	minWidth: 40,
+	toolbar: {
+		options: {}
+	},
+	pane: {
+		options: {}
 	}
 }
 ```
