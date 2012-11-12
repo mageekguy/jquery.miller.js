@@ -17,10 +17,13 @@
 
 		this
 			.addClass('miller')
-			.attr('tabindex', settings.tabindex)
 			.focus(function() { hasFocus = true; })
 			.blur(function() { hasFocus = false; })
 		;
+
+		if (!this.attr('tabindex')) {
+			this.attr('tabindex', settings.tabindex);
+		}
 
 		var path = $('<div>', { class: 'path' })
 			.appendTo(this)
