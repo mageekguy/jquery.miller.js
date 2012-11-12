@@ -35,7 +35,7 @@
 
 		var currentLine = null;
 
-		$(document).on('keydown', function(event) {
+		$(document).keydown(function(event) {
 				if (hasFocus && currentLine && (event.which == 37 || event.which == 38 || event.which == 39 || event.which == 40)) {
 					var newCurrentLine = [];
 
@@ -92,7 +92,7 @@
 
 				path
 					.append($('<span>', { text: line.text(), css: { cursor: 'pointer' } })
-						.on('click', function() {
+						.click(function() {
 								columns
 									.children()
 										.slice((($(this).index() * 2) + 4))
@@ -147,7 +147,7 @@
 
 						$.each(settings.panel.options, function(key, callbackGenerator) {
 								var option = $('<li>', { text: key })
-									.on('click', callbackGenerator(id))
+									.click(callbackGenerator(id))
 								;
 
 								option.appendTo(panel);
@@ -168,8 +168,8 @@
 						$.each(lines, function(id, data) {
 								var line = $('<li>', { text: data['name'], css: { cursor: 'pointer' } })
 									.data('id', data['id'])
-									.on('click', removeNextColumns)
-									.on('click', getLines)
+									.click(removeNextColumns)
+									.click(getLines)
 									.appendTo(column)
 								;
 
