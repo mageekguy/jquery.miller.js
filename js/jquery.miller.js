@@ -15,15 +15,15 @@
 
 		var hasFocus = false;
 
+		if (!this.attr('tabindex')) {
+			this.attr('tabindex', settings.tabindex);
+		}
+
 		this
 			.addClass('miller')
 			.focus(function() { hasFocus = true; })
 			.blur(function() { hasFocus = false; })
 		;
-
-		if (!this.attr('tabindex')) {
-			this.attr('tabindex', settings.tabindex);
-		}
 
 		var path = $('<div>', { class: 'path' })
 			.appendTo(this)
