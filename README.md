@@ -11,6 +11,7 @@ If you want to see this plugin in action, there is a [demo](http://mgbx.net/demo
 * Keyboard navigation.
 * Full customizable preview pane.
 * Full customizable toolbar.
+* Redimensionable columns.
 
 ## How to use it ?
 
