@@ -140,7 +140,7 @@
 						;
 
 						var pane = $('<ul>')
-							.css({ 'top': 0, 'left': width })
+							.css({ top: 0, left: width })
 							.addClass('pane')
 						;
 
@@ -161,7 +161,7 @@
 						$('li.parentLoading').addClass('parentSelected');
 
 						var column = $('<ul>')
-							.css({ 'top': 0, 'left': width })
+							.css({ top: 0, left: width })
 						;
 
 						$.each(lines, function(id, data) {
@@ -183,7 +183,7 @@
 							.scrollLeft(width += column.width())
 							.append(
 								$('<div>', { class: 'grip' })
-									.css({ 'top': 0, 'left': width })
+									.css({ top: 0, left: width })
 									.mousedown(function(event) {
 											var x = event.pageX;
 											var cursor = columns.css('cursor');
