@@ -21,9 +21,9 @@
 {
 	position: absolute;
 	width: 100%;
-	height: 130px;
+	height: 110px;
 	left: 0;
-	top: 0;
+	top: 20px;
 	padding: 0;
 	margin: 0;
 	overflow: auto;
@@ -32,10 +32,10 @@
 .miller div.path
 {
 	position: absolute;
-	border-top: solid 1px #ddd;
+	border-bottom: solid 1px #ddd;
 	margin: 0;
 	left: 0;
-	bottom: 0;
+	top: 0;
 	background: #fff;
 	width: 100%;
 	height: 20px;
@@ -54,6 +54,28 @@
 	background-repeat: no-repeat;
 	background-position: 0 50%;
 	white-space: nowrap;
+}
+
+.miller div.toolbar
+{
+	position: absolute;
+	border-top: solid 1px #ddd;
+	margin: 0;
+	left: 0;
+	bottom: 0;
+	background: #fff;
+	width: 100%;
+	height: 20px;
+	font-size: 0.6em;
+	line-height: 20px;
+	overflow: auto;
+	z-index: 9999;
+}
+
+.miller div.toolbar span
+{
+	padding-left: 1em;
+	padding-right: 1em;
 }
 
 .miller div.columns ul
@@ -124,33 +146,20 @@
 	background: #fff;
 }
 
-.miller div.columns ul.pane li
+.miller ul.pane li
 {
-	-webkit-appearance: none;
-	-webkit-box-align: center;
-	-webkit-box-shadow: rgba(255, 255, 255, 0.199219) 0px 1px 0px 0px inset, rgba(0, 0, 0, 0.046875) 0px 1px 2px 0px;
-	background-color: rgb(245, 245, 245);
-	background-image: -webkit-linear-gradient(top, rgb(255, 255, 255), rgb(230, 230, 230));
-	background-repeat: repeat-x;
-	border-radius: 3px;
-	border-bottom: solid 1px rgba(0, 0, 0, 0.246094);
-	border-left: solid 1px rgba(0, 0, 0, 0.148438);
-	border-right: solid 1px rgba(0, 0, 0, 0.148438);
-	border-top: solid 1px rgba(0, 0, 0, 0.148438);
-	box-shadow: rgba(255, 255, 255, 0.199219) 0px 1px 0px 0px inset, rgba(0, 0, 0, 0.046875) 0px 1px 2px 0px;
-	box-sizing: border-box;
-	color: rgb(51, 51, 51);
-	cursor: pointer;
-	display: inline-block;
-	font-size: 11px;
-	font-weight: normal;
-	height: 24px;
-	letter-spacing: normal;
-	line-height: 20px;
 	margin: 0;
 	padding: 0;
+	cursor: pointer;
+	font-size: 11px;
+	font-weight: normal;
+	letter-spacing: normal;
+	line-height: 20px;
 	text-align: center;
-	text-shadow: rgba(255, 255, 255, 0.746094) 0px 1px 1px;
 	vertical-align: middle;
+}
+
+.miller ul.pane li
+{
 	width: 100%;
 }

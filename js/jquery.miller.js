@@ -4,8 +4,10 @@
 					url: function(id) { return id; },
 					tabindex: 0,
 					minWidth: 40,
+					toolbar: {
+						options: {}
+					},
 					pane: {
-						width: '100px',
 						options: {}
 					}
 				},
@@ -32,6 +34,14 @@
 		var columns = $('<div>', { class: 'columns' })
 			.appendTo(this)
 		;
+
+		var toolbar = null;
+
+		if (!$.isEmptyObject(settings.toolbar.options)) {
+			var toolbar = $('<div>', { class: 'toolbar' })
+				.appendTo(this)
+			;
+		};
 
 		var currentLine = null;
 
@@ -124,6 +134,18 @@
 				if (lines == null) {
 					$('li.parentLoading').remove();
 				} else {
+					if (currentLine && toolbar) {
+						toolbar.children().remove();
+
+						$.each(settings.toolbar.options, function(key, callbackGenerator) {
+								$('<span>', { text: key, css: { cursor: 'pointer' } })
+									.click(callbackGenerator(currentLine.data('id')))
+									.appendTo(toolbar)
+								;
+							}
+						);
+					}
+
 					var width = 0;
 
 					var lastGrip = columns.children('div.grip:last')[0];
@@ -132,34 +154,31 @@
 						lastGrip = $(lastGrip);
 						width = lastGrip.position().left + lastGrip.width() + columns.scrollLeft();
 					}
-
+					
 					if (lines.length <= 0) {
 						var line = $('li.parentLoading')
 							.removeClass('parent')
 							.addClass('selected')
 						;
 
-						var id = line.data('id');
-
-						var options = [];
-
-						$.each(settings.pane.options, function(key, callbackGenerator) {
-								options.push($('<li>', { text: key })
-										.click(callbackGenerator(id))
-									)
-								;
-							}
-						);
-
-						if (options.length) {
+						if (!$.isEmptyObject(settings.pane.options)) {
 							var pane = $('<ul>')
 								.css({ top: 0, left: width })
 								.addClass('pane')
-								.append(options)
-								.appendTo(columns)
 							;
 
+							var id = line.data('id');
+
+							$.each(settings.pane.options, function(key, callbackGenerator) {
+									$('<li>', { text: key })
+										.click(callbackGenerator(id))
+										.appendTo(pane)
+									;
+								}
+							);
+
 							columns
+								.append(pane)
 								.scrollLeft(width + pane.width())
 							;
 						}
