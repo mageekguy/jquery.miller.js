@@ -76,22 +76,25 @@
 							break;
 					}
 
-					if (newCurrentLine.length && (event.which == 38 || event.which == 40)) {
+					if (newCurrentLine.length) {
 						currentLine = newCurrentLine.click();
-						currentColumn = currentLine.parent();
 
-						if (event.which == 40) {
-							bottomOfCurrentLine = currentLine.position().top + currentLine.height();
-							heightOfCurrentColumn = currentColumn.height();
+						if (event.which == 38 || event.which == 40) {
+							currentColumn = currentLine.parent();
 
-							if (bottomOfCurrentLine > heightOfCurrentColumn) {
-								currentColumn.scrollTop(currentColumn.scrollTop() + (bottomOfCurrentLine - heightOfCurrentColumn));
-							}
-						} else if (event.which == 38) {
-							topOfCurrentLine = currentLine.position().top;
+							if (event.which == 40) {
+								bottomOfCurrentLine = currentLine.position().top + currentLine.height();
+								heightOfCurrentColumn = currentColumn.height();
 
-							if (topOfCurrentLine < 0) {
-								currentColumn.scrollTop(currentColumn.scrollTop() + topOfCurrentLine);
+								if (bottomOfCurrentLine > heightOfCurrentColumn) {
+									currentColumn.scrollTop(currentColumn.scrollTop() + (bottomOfCurrentLine - heightOfCurrentColumn));
+								}
+							} else if (event.which == 38) {
+								topOfCurrentLine = currentLine.position().top;
+
+								if (topOfCurrentLine < 0) {
+									currentColumn.scrollTop(currentColumn.scrollTop() + topOfCurrentLine);
+								}
 							}
 						}
 					}
