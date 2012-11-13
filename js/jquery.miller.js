@@ -82,20 +82,24 @@
 						if (event.which == 38 || event.which == 40) {
 							currentColumn = currentLine.parent();
 
+							var scroll = 0;
+
 							if (event.which == 38) {
 								topOfCurrentLine = currentLine.position().top;
 
 								if (topOfCurrentLine < 0) {
-									currentColumn.scrollTop(currentColumn.scrollTop() + topOfCurrentLine);
+									scroll = topOfCurrentLine;
 								}
-							} else if (event.which == 40) {
+							} else {
 								bottomOfCurrentLine = currentLine.position().top + currentLine.height();
 								heightOfCurrentColumn = currentColumn.height();
 
 								if (bottomOfCurrentLine > heightOfCurrentColumn) {
-									currentColumn.scrollTop(currentColumn.scrollTop() + (bottomOfCurrentLine - heightOfCurrentColumn));
+									scroll = bottomOfCurrentLine - heightOfCurrentColumn;
 								}
 							}
+
+							currentColumn.scrollTop(currentColumn.scrollTop() + scroll);
 						}
 					}
 
