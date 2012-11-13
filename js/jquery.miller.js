@@ -79,10 +79,10 @@
 					if (newCurrentLine.length) {
 						currentLine = newCurrentLine.click();
 
-						if (event.which == 40) {
-							currentLine.parent().scrollTop(currentLine.parent().scrollTop() + currentLine.height());
-						} else if (event.which == 38) {
-							currentLine.parent().scrollTop(currentLine.parent().scrollTop() - currentLine.height());
+						if (event.which == 40 && (currentLine.position().top + currentLine.height()) > currentLine.parent().height()) {
+								currentLine.parent().scrollTop(currentLine.parent().scrollTop() + ((currentLine.position().top + currentLine.height()) - currentLine.parent().height()));
+						} else if (event.which == 38 && currentLine.position().top < 0) {
+							currentLine.parent().scrollTop(currentLine.parent().scrollTop() + currentLine.position().top);
 						}
 					}
 

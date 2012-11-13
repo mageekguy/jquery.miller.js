@@ -95,6 +95,7 @@
 
 .miller li
 {
+	border: solid 1px #fff;
 	padding-left: 0.5em;
 	padding-right: 0.5em;
 	list-style-type: none;
@@ -105,7 +106,6 @@
 
 .miller li.parent
 {
-	border-bottom: solid 1px #fff;
 	background-image: url('../images/chevron-black.png');
 	background-repeat: no-repeat;
 	background-position: 100% 50%;
