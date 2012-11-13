@@ -17,6 +17,7 @@
 		;
 
 		var hasFocus = false;
+		var currentAjaxRequest = null;
 
 		if (!this.attr('tabindex')) {
 			this.attr('tabindex', settings.tabindex);
@@ -282,16 +283,22 @@
 		;
 
 		var getLines = function(event) {
+				if (currentAjaxRequest) {
+					currentAjaxRequest.abort();
+				}
+
 				currentLine = $(event.currentTarget)
 					.removeClass('parentSelected')
 					.addClass('parentLoading')
 				;
 
-				$.getJSON(settings.url($(this).data('id')), buildColumn)
+				currentAjaxRequest = $.getJSON(settings.url($(this).data('id')), buildColumn)
 					.always(function() {
 							currentLine
 								.removeClass('parentLoading')
 							;
+
+							currentAjaxRequest = null;
 						}
 					)
 					.fail(function() {})
