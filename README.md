@@ -1,6 +1,6 @@
 # jQuery.miller.js
 
-## An implementation of [Miller column](http://en.wikipedia.org/wiki/Miller_columns) with [jQuery](http://jquery.com)!
+## An implementation of [Miller columns](http://en.wikipedia.org/wiki/Miller_columns) with [jQuery](http://jquery.com)!
 
 It's a work in progress, so use it carefully!  
 If you want to see this plugin in action, there is a [demo](http://mgbx.net/demomiller).
