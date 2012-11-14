@@ -77,7 +77,7 @@
 							break;
 					}
 
-					if (newCurrentLine.length) {
+					if (newCurrentLine.length && !newCurrentLine.parent().hasClass('pane')) {
 						currentLine = newCurrentLine.click();
 
 						if (event.which == 38 || event.which == 40) {
