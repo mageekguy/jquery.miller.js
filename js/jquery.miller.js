@@ -47,9 +47,21 @@
 
 		var currentLine = null;
 
+		$(document).keypress(function(event) {
+				if (hasFocus && currentLine && event.which != 37 && event.which != 38 && event.which != 39 && event.which != 40) {
+					var newCurrentLine = currentLine.parent().children().filter(function() { return $(this).text().match(new RegExp('^' + String.fromCharCode(event.which))); }).first();
+
+					if (newCurrentLine.length) {
+						currentLine = newCurrentLine.click();
+					}
+				}
+			}
+		);
+
 		$(document).keydown(function(event) {
 				if (hasFocus && currentLine && (event.which == 37 || event.which == 38 || event.which == 39 || event.which == 40)) {
 					var newCurrentLine = [];
+					var scrollTop = currentLine.parent().scrollTop();
 
 					switch (event.which) {
 						case 37:
@@ -61,6 +73,7 @@
 
 							if (!newCurrentLine.length && settings.carroussel) {
 								newCurrentLine = currentLine.parent().find('li:last');
+								scrollTop = newCurrentLine.position().top;
 							}
 							break;
 
@@ -73,35 +86,13 @@
 
 							if (!newCurrentLine.length && settings.carroussel) {
 								newCurrentLine = currentLine.parent().find('li:first');
+								scrollTop = 0;
 							}
 							break;
 					}
 
 					if (newCurrentLine.length && !newCurrentLine.parent().hasClass('pane')) {
 						currentLine = newCurrentLine.click();
-
-						if (event.which == 38 || event.which == 40) {
-							currentColumn = currentLine.parent();
-
-							var scroll = 0;
-
-							if (event.which == 38) {
-								topOfCurrentLine = currentLine.position().top;
-
-								if (topOfCurrentLine < 0) {
-									scroll = topOfCurrentLine;
-								}
-							} else {
-								bottomOfCurrentLine = currentLine.position().top + currentLine.height();
-								heightOfCurrentColumn = currentColumn.height();
-
-								if (bottomOfCurrentLine > heightOfCurrentColumn) {
-									scroll = bottomOfCurrentLine - heightOfCurrentColumn;
-								}
-							}
-
-							currentColumn.scrollTop(currentColumn.scrollTop() + scroll);
-						}
 					}
 
 					return false;
@@ -176,6 +167,26 @@
 								;
 							}
 						);
+					}
+
+					if (currentLine) {
+						var currentColumn = currentLine.parent();
+						var scroll = 0;
+						var scrollTop = currentColumn.scrollTop();
+						var topOfCurrentLine = currentLine.position().top;
+
+						if (topOfCurrentLine < 0) {
+							scroll = topOfCurrentLine;
+						} else {
+							var bottomOfCurrentLine = currentLine.position().top + currentLine.height();
+							var heightOfCurrentColumn = currentColumn.height();
+
+							if (bottomOfCurrentLine > heightOfCurrentColumn) {
+								scroll = bottomOfCurrentLine - heightOfCurrentColumn;
+							}
+						}
+
+						currentColumn.scrollTop(scrollTop + scroll);
 					}
 
 					var width = 0;
