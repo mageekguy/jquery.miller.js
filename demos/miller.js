@@ -1,5 +1,5 @@
 $(document).ready(function() {
-		$('div').miller({
+		$('#miller').miller({
 				url: function(id) {
 					if (!id) {
 						return 'miller1.json';
