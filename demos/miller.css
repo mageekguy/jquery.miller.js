@@ -84,9 +84,8 @@ div.miller
 #footer
 {
 	padding: 0;
-	margin: 0;
+	margin-top: 3em;
 	border-top: solid 1px #333;
-	margin-top: 1em;
 	background-color: #2f2f2f;
 	text-align: center;
 }
