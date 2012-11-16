@@ -160,9 +160,9 @@
 					if (currentLine && toolbar) {
 						toolbar.children().remove();
 
-						$.each(settings.toolbar.options, function(key, callbackGenerator) {
+						$.each(settings.toolbar.options, function(key, callback) {
 								$('<span>', { 'text': key })
-									.click(callbackGenerator(currentLine.data('id')))
+									.click(function() { callback.call(miller, currentLine.data('id')) })
 									.appendTo(toolbar)
 								;
 							}
@@ -212,9 +212,9 @@
 
 							var id = line.data('id');
 
-							$.each(settings.pane.options, function(key, callbackGenerator) {
+							$.each(settings.pane.options, function(key, callback) {
 									$('<li>', { 'text': key })
-										.click(callbackGenerator(id))
+										.click(function() { callback.call(miller, currentLine.data('id')) })
 										.appendTo(pane)
 									;
 								}

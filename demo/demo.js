@@ -27,15 +27,15 @@ $(document).ready(function() {
 				},
 				'toolbar': {
 					'options': {
-						'Select': function(id) { return function() { alert('Select node or leaf ' + id); }; },
-						'Quickview': function(id) { return function() { alert('Quickview on node or leaf ' + id); }; },
+						'Select': function(id) { alert('Select node or leaf ' + id); },
+						'Quickview': function(id) { alert('Quickview on node or leaf ' + id); }
 					}
 				},
 				'pane': {
 					'options': {
-						'Add': function(id) { return function() { alert('Add to leaf ' + id); }; },
-						'Update': function(id) { return function() { alert('Update leaf ' + id); }; },
-						'Delete': function(id) { return function() { alert('Delete leaf ' + id); }; }
+						'Add': function(id) { alert('Add to leaf ' + id); },
+						'Update': function(id) { alert('Update leaf ' + id); },
+						'Delete': function(id) { alert('Delete leaf ' + id); }
 					}
 				}
 			}
