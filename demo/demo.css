@@ -145,7 +145,7 @@ div.miller .toolbar
 
 #footer a
 {
-	color: #08c;
+	color: #ccc;
 }
 
 #footer ul li
@@ -161,5 +161,4 @@ div.miller .toolbar
 	background-position: 0 100%;
 	padding-left: 16px;
 	padding-top: 32px;
-	color: #ccc;
 }
