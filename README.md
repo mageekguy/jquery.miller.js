@@ -41,15 +41,29 @@ $(document).ready(function() { $('div').miller() });
 You can pass an object litteral to the `miller` function to customize behavior of the plugin.  
 The default values are :
 
-```JavaScript
+``` JavaScript
 {
-	url: function(id) { return id; },
-	minWidth: 40,
+	url: function(id) { return id; }, // generate url for ajax call, id is the value of the node ID
+	minWidth: 40, // minimum width of one column
+	tabindex: 0, // default tabindex if it is undefined on the DOM element
+	carroussel: false, // If set to true, the user will go to the first item of the column if it use ↓ on the last item
 	toolbar: {
-		options: {}
+		options: {} // Add callbacks here to handle actions in the toolbar, see the demo for more informations
 	},
 	pane: {
-		options: {}
+		options: {} // Add callbacks here to handle actions in the pane, see the demo for more informations
 	}
 }
+```
+
+The ajax call must return a JSON array with the following structure:
+
+``` JavaScript
+[
+   { 'id': 'ID of node 1', 'name': 'Name of node 1', 'parent': false }, // this node has no child
+   { 'id': 'ID of node 2', 'name': 'Name of node 2', 'parent': true }, // this node has some children
+   { 'id': 'ID of node 3', 'name': 'Name of node 3', 'parent': false }, // this node has no child
+	// and so on…
+]
+
 ```
