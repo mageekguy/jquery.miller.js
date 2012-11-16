@@ -119,6 +119,7 @@
 				line.addClass(line.hasClass('parent') ? 'parentSelected' : 'selected');
 
 				var node = $('<span>', { 'text': line.text() })
+					.data('id', line.data('id'))
 					.click(function() {
 							columns
 								.children()
