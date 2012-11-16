@@ -1,5 +1,8 @@
 (function($) {
 	$.fn.miller = function(settings) {
+		var miller = this;
+		var hasFocus = false;
+		var currentAjaxRequest = null;
 		var settings = $.extend(true, {
 					'url': function(id) { return id; },
 					'tabindex': 0,
@@ -16,32 +19,29 @@
 			)
 		;
 
-		var hasFocus = false;
-		var currentAjaxRequest = null;
-
-		if (!this.attr('tabindex')) {
-			this.attr('tabindex', settings.tabindex);
+		if (!miller.attr('tabindex')) {
+			miller.attr('tabindex', settings.tabindex);
 		}
 
-		this
+		miller
 			.addClass('miller')
 			.focus(function() { hasFocus = true; })
 			.blur(function() { hasFocus = false; })
 		;
 
 		var path = $('<div>', { 'class': 'path' })
-			.appendTo(this)
+			.appendTo(miller)
 		;
 
 		var columns = $('<div>', { 'class': 'columns' })
-			.appendTo(this)
+			.appendTo(miller)
 		;
 
 		var toolbar = null;
 
 		if (!$.isEmptyObject(settings.toolbar.options)) {
 			var toolbar = $('<div>', { 'class': 'toolbar' })
-				.appendTo(this)
+				.appendTo(miller)
 			;
 		};
 
@@ -320,6 +320,6 @@
 
 		$.getJSON(settings.url(), buildColumn);
 
-		return this;
+		return miller;
 	};
 })(jQuery);
