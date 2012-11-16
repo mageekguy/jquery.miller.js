@@ -24,6 +24,28 @@ a.github img
 div.miller
 {
 	width: 100%;
+	background-image: url('images/otis_redding.png');
+}
+
+div.miller span, div.miller .pane li
+{
+	font-size: 10px;
+	font-weight: bold;
+	color: #666;
+}
+
+div.miller .path
+{
+	background-image: url('images/toolbar.png');
+	background-repeat: repeat-x;
+	border-bottom: solid 1px #999;
+}
+
+div.miller .toolbar
+{
+	background-image: url('images/toolbar.png');
+	background-repeat: repeat-x;
+	border-top: solid 1px #999;
 }
 
 #header
@@ -97,7 +119,8 @@ div.miller
 	margin: 0 auto;
 	padding: 0 0 2em 0;
 	text-align: left;
-	border-left: solid 5px #333;
+	background-image: url('images/footer.png');
+	background-repeat: repeat-y;
 }
 
 #footer h2

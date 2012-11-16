@@ -1,15 +1,15 @@
 (function($) {
 	$.fn.miller = function(settings) {
 		var settings = $.extend(true, {
-					url: function(id) { return id; },
-					tabindex: 0,
-					minWidth: 40,
-					carroussel: false,
-					toolbar: {
-						options: {}
+					'url': function(id) { return id; },
+					'tabindex': 0,
+					'minWidth': 40,
+					'carroussel': false,
+					'toolbar': {
+						'options': {}
 					},
-					pane: {
-						options: {}
+					'pane': {
+						'options': {}
 					}
 				},
 				settings
@@ -29,18 +29,18 @@
 			.blur(function() { hasFocus = false; })
 		;
 
-		var path = $('<div>', { class: 'path' })
+		var path = $('<div>', { 'class': 'path' })
 			.appendTo(this)
 		;
 
-		var columns = $('<div>', { class: 'columns' })
+		var columns = $('<div>', { 'class': 'columns' })
 			.appendTo(this)
 		;
 
 		var toolbar = null;
 
 		if (!$.isEmptyObject(settings.toolbar.options)) {
-			var toolbar = $('<div>', { class: 'toolbar' })
+			var toolbar = $('<div>', { 'class': 'toolbar' })
 				.appendTo(this)
 			;
 		};
@@ -118,7 +118,7 @@
 
 				line.addClass(line.hasClass('parent') ? 'parentSelected' : 'selected');
 
-				var node = $('<span>', { text: line.text() })
+				var node = $('<span>', { 'text': line.text() })
 					.click(function() {
 							columns
 								.children()
@@ -161,7 +161,7 @@
 						toolbar.children().remove();
 
 						$.each(settings.toolbar.options, function(key, callbackGenerator) {
-								$('<span>', { text: key })
+								$('<span>', { 'text': key })
 									.click(callbackGenerator(currentLine.data('id')))
 									.appendTo(toolbar)
 								;
@@ -206,14 +206,14 @@
 
 						if (!$.isEmptyObject(settings.pane.options)) {
 							var pane = $('<ul>')
-								.css({ top: 0, left: width })
+								.css({ 'top': 0, 'left': width })
 								.addClass('pane')
 							;
 
 							var id = line.data('id');
 
 							$.each(settings.pane.options, function(key, callbackGenerator) {
-									$('<li>', { text: key })
+									$('<li>', { 'text': key })
 										.click(callbackGenerator(id))
 										.appendTo(pane)
 									;
@@ -229,11 +229,11 @@
 						$('li.parentLoading').addClass('parentSelected');
 
 						var column = $('<ul>')
-							.css({ top: 0, left: width })
+							.css({ 'top': 0, 'left': width })
 						;
 
 						$.each(lines, function(id, data) {
-								var line = $('<li>', { text: data['name'] })
+								var line = $('<li>', { 'text': data['name'] })
 									.data('id', data['id'])
 									.click(removeNextColumns)
 									.click(getLines)
@@ -250,8 +250,8 @@
 							.append(column)
 							.scrollLeft(width += column.width())
 							.append(
-								$('<div>', { class: 'grip' })
-									.css({ top: 0, left: width })
+								$('<div>', { 'class': 'grip' })
+									.css({ 'top': 0, 'left': width })
 									.mousedown(function(event) {
 											var x = event.pageX;
 											var cursor = columns.css('cursor');
