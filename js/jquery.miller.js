@@ -21,6 +21,7 @@
 			var currentAjaxRequest = null;
 			var settings = $.extend(true, {
 						'url': function(id) { return id; },
+						'transform': function(lines) { return lines; },
 						'tabindex': 0,
 						'minWidth': 40,
 						'carroussel': false,
@@ -310,6 +311,10 @@
 				}
 			;
 
+			var transformAndBuildColumn = function(data) {
+					buildColumn(settings.transform.call(miller, data));
+			};
+
 			var getLines = function(event) {
 					if (currentAjaxRequest) {
 						currentAjaxRequest.abort();
@@ -320,7 +325,7 @@
 						.addClass('parentLoading')
 					;
 
-					currentAjaxRequest = $.getJSON(settings.url($(this).data('id')), buildColumn)
+					currentAjaxRequest = $.getJSON(settings.url($(this).data('id')), transformAndBuildColumn)
 						.always(function() {
 								currentLine
 									.removeClass('parentLoading')
@@ -335,7 +340,7 @@
 				}
 			;
 
-			$.getJSON(settings.url(), buildColumn);
+			$.getJSON(settings.url(), transformAndBuildColumn);
 
 			return miller;
 		}

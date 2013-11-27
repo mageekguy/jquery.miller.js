@@ -44,6 +44,7 @@ The default values are :
 ``` JavaScript
 {
 	url: function(id) { return id; }, // generate url for ajax call, id is the value of the node ID
+	transform: function(lines) { return lines; }, // transform the data to conform to the JSON array structure outlined below
 	minWidth: 40, // minimum width of one column
 	tabindex: 0, // default tabindex if it is undefined on the DOM element
 	carroussel: false, // If set to true, the user will go to the first item of the column if it use ↓ on the last item
