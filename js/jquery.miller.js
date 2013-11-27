@@ -325,7 +325,7 @@
 						.addClass('parentLoading')
 					;
 
-					currentAjaxRequest = $.getJSON(settings.url($(this).data('id')), transformAndBuildColumn)
+					currentAjaxRequest = $.getJSON(settings.url.call(miller, $(this).data('id')), transformAndBuildColumn)
 						.always(function() {
 								currentLine
 									.removeClass('parentLoading')
@@ -340,7 +340,7 @@
 				}
 			;
 
-			$.getJSON(settings.url(), transformAndBuildColumn);
+			$.getJSON(settings.url.call(miller), transformAndBuildColumn);
 
 			return miller;
 		}
