@@ -9,6 +9,21 @@
 			);
 
 			return path;
+		},
+		'setPath': function(path) {
+			// Make sure path is an array
+			if (!$.isArray(path) || path.length == 0) {
+				return;
+			}
+
+			$.each(path, function(index, value) {
+				var list = $('.columns ul').get(index);
+				var $listItems = $(list).children();
+				var $item = $listItems.filter(function(index) {
+					return $(this).data('id') == value;
+				});
+				$item.click();
+			});
 		}
 	};
 
@@ -22,6 +37,8 @@
 			var settings = $.extend(true, {
 						'url': function(id) { return id; },
 						'transform': function(lines) { return lines; },
+						'preloadedData': {},
+						'initialPath': [],
 						'tabindex': 0,
 						'minWidth': 40,
 						'carroussel': false,
@@ -316,31 +333,75 @@
 			};
 
 			var getLines = function(event) {
-					if (currentAjaxRequest) {
-						currentAjaxRequest.abort();
-					}
-
+					var id = $(this).data('id');
 					currentLine = $(event.currentTarget)
 						.removeClass('parentSelected')
 						.addClass('parentLoading')
 					;
+					// First, let's check for preloadedData
+					var preloadedData = getPreloadedData();
+					if (preloadedData) {
+						buildColumn(preloadedData);
+						currentLine
+							.removeClass('parentLoading')
+						;
+					} else {
+						if (currentAjaxRequest) {
+							currentAjaxRequest.abort();
+						}
 
-					currentAjaxRequest = $.getJSON(settings.url.call(miller, $(this).data('id')), transformAndBuildColumn)
-						.always(function() {
-								currentLine
-									.removeClass('parentLoading')
-								;
+						currentAjaxRequest = $.getJSON(settings.url.call(miller, id), transformAndBuildColumn)
+							.always(function() {
+									currentLine
+										.removeClass('parentLoading')
+									;
 
-								currentAjaxRequest = null;
-							}
-						)
-						.fail(function() {})
-					;
-
+									currentAjaxRequest = null;
+								}
+							)
+							.fail(function() {})
+						;
+					}
 				}
 			;
 
-			$.getJSON(settings.url.call(miller), transformAndBuildColumn);
+			var getPreloadedData = function() {
+					if (!$.isEmptyObject(settings.preloadedData)) {
+						var currentPath = $.map(methods['getPath'].call(miller), function(value, index) {
+							return value.id;
+						});
+
+						var currentObj = settings.preloadedData;
+						$.each(currentPath, function(pathIndex, pathValue) {
+							var children = currentObj.children;
+							if (!$.isArray(children) || children.length == 0) {
+								return false; // break
+							}
+							$.each(children, function(childIndex, childValue) {
+								if (childValue.id == pathValue) {
+									currentObj = childValue;
+									return false; // break
+								}
+							});
+						});
+						return currentObj.children || [];
+					}
+					return null;
+				}
+			;
+
+			var init = function() {
+					var preloadedData = getPreloadedData();
+					if(preloadedData) {
+						buildColumn(preloadedData);
+					} else {
+						$.getJSON(settings.url.call(miller), transformAndBuildColumn);
+					}
+					methods['setPath'](settings.initialPath);
+				}
+			;
+
+			init();
 
 			return miller;
 		}
