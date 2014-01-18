@@ -278,6 +278,11 @@
 									if (data['parent']) {
 										line.addClass('parent');
 									}
+									if (data['image']) {
+										$('<img>', { 'src': data['image']})
+											.prependTo(line)
+										;
+									}
 								}
 							);
 

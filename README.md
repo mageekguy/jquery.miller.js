@@ -66,6 +66,7 @@ The ajax call must return a JSON array with the following structure:
    { 'id': 'ID of node 1', 'name': 'Name of node 1', 'parent': false }, // this node has no child
    { 'id': 'ID of node 2', 'name': 'Name of node 2', 'parent': true }, // this node has some children
    { 'id': 'ID of node 3', 'name': 'Name of node 3', 'parent': false }, // this node has no child
+   { 'id': 'ID of node 4', 'name': 'Name of node 4', 'parent': false, 'image': '../image.png' }, // this node has an image
 	// and so on…
 ]
 
