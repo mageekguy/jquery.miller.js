@@ -44,6 +44,9 @@ The default values are :
 ``` JavaScript
 {
 	url: function(id) { return id; }, // generate url for ajax call, id is the value of the node ID
+	transform: function(lines) { return lines; }, // transform the data to conform to the JSON array structure outlined below
+	preloadedData: {}, // A data object matching the JSON structure below that will be used before calls to 'url' to fetch data
+	initialPath: [], // The path to initialize the UI to.  This is an array of IDs.  Currently only works when using preloadedData.
 	minWidth: 40, // minimum width of one column
 	tabindex: 0, // default tabindex if it is undefined on the DOM element
 	carroussel: false, // If set to true, the user will go to the first item of the column if it use ↓ on the last item
@@ -63,6 +66,7 @@ The ajax call must return a JSON array with the following structure:
    { 'id': 'ID of node 1', 'name': 'Name of node 1', 'parent': false }, // this node has no child
    { 'id': 'ID of node 2', 'name': 'Name of node 2', 'parent': true }, // this node has some children
    { 'id': 'ID of node 3', 'name': 'Name of node 3', 'parent': false }, // this node has no child
+   { 'id': 'ID of node 4', 'name': 'Name of node 4', 'parent': false, 'image': '../image.png' }, // this node has an image
 	// and so on…
 ]
 
