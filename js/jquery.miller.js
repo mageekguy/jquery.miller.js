@@ -47,7 +47,10 @@
 						},
 						'pane': {
 							'options': {}
-						}
+						},
+                        'onClick' : function() {
+                            // No-op
+                        }
 					},
 					mixed
 				)
@@ -272,6 +275,7 @@
 										.data('id', data['id'])
 										.click(removeNextColumns)
 										.click(getLines)
+                                        .click(settings.onClick)
 										.appendTo(column)
 									;
 
